@@ -10,19 +10,8 @@ export class PhoneService {
   }
 
   getPhoneList() {
-    const headerDict = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Origin':'*'
-    }
-
-    const requestOptions = {
-      headers: new Headers(headerDict),
-    };
-    // @ts-ignore
-    return this.http.get(PHONE_LIST,requestOptions);
+    return this.http.get(PHONE_LIST);
   }
 }
 
-export const PHONE_LIST: string = 'http://localhost:8080/api/phoneList';
+export const PHONE_LIST: string = '/phoneList';

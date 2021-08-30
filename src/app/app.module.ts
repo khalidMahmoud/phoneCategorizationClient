@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {MainHttpInterceptor} from "./Interceptors/MainHttpInterceptor";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: MainHttpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
